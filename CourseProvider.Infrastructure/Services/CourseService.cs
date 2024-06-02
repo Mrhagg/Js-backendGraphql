@@ -13,7 +13,7 @@ public interface ICourseService
 {
     Task<Course> CreateCourseAsync(CourseCreateRequest request);
 
-    Task<Course> GetCourseById(string id);
+    Task<Course> GetCourseByIdAsync(string id);
 
     Task<IEnumerable<Course>> GetCoursesAsync();
 
@@ -54,11 +54,7 @@ public class CourseService(IDbContextFactory<DataContext> contextFactory) : ICou
         return true;    
     }
 
-    public Task<Course> GetCourseById(string id)
-    {
-        throw new NotImplementedException();
-    }
-
+    
     public async Task<Course> GetCourseByIdAsync(string id)
     {
         await using var context = _contextFactory.CreateDbContext();

@@ -1,12 +1,15 @@
+using CourseProvider;
 using CourseProvider.Infrastructure.Data.Context;
 using CourseProvider.Infrastructure.GrapQl;
 using CourseProvider.Infrastructure.GrapQl.Mutations;
 using CourseProvider.Infrastructure.GrapQl.ObjectTypes;
 using CourseProvider.Infrastructure.Services;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 
 
 
@@ -23,7 +26,7 @@ var host = new HostBuilder()
                 .UseLazyLoadingProxies();
         }
         );
-
+       
         services.AddScoped<ICourseService, CourseService>();
 
 
@@ -40,6 +43,6 @@ var host = new HostBuilder()
         using var context = dbContextFactory.CreateDbContext();
         context.Database.EnsureCreated();
     })
-    .Build();
+      .Build();
 
 host.Run();

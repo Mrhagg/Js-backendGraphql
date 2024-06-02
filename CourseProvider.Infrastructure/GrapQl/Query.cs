@@ -18,6 +18,6 @@ public class Query(ICourseService courseService)
 
     public async Task<Course> GetCourseByIdAsync(string id)
     {
-      return await _courseService.GetCourseById(id); 
+      return await _courseService.GetCourseByIdAsync(id); 
     }
 }
